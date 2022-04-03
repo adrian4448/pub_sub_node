@@ -10,11 +10,10 @@ function escutarEventosPull() {
     const subscription = pubSubClient.subscription('projects/planar-root-338415/subscriptions/teste-adrian-sub');
 
     // callback com as mensagens disponiveis na fila
-    subscription.on('eventos', message => {
+    subscription.on('message', message => {
         console.log('recebi a mensagem de id:', message.id)
         console.log('conteudo da mensagem', message.data.toString())
 
-        //Esse cara remove a mensagem da fila
         message.ack()
     });
 }
